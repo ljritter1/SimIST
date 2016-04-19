@@ -7,6 +7,7 @@ package views;
 
 import controllers.FloorController;
 import entities.Room;
+import entities.TwitterFeed;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -55,6 +56,8 @@ public class Floor1 extends JPanel implements ActionListener, KeyListener{
         rooms.add(new Room(206));
         rooms.add(new Room(208));
         rooms.add(new Room(210));
+        //new addition
+        //rooms.add(new TwitterFeed);
         entries.add(new RoomEntry(202, 50, 100, rooms.get(0)));
         entries.add(new RoomEntry(204, 50, 150, rooms.get(1)));
         entries.add(new RoomEntry(206, 50, 200, rooms.get(2)));

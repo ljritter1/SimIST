@@ -31,6 +31,10 @@ public class Room extends JPanel implements ActionListener, KeyListener{
     private Player player1;
     //private GameFrame theFrame;
     
+    public Room(){
+        
+    }
+    
     public Room(int theRoomNumber){
        super();
        this.addKeyListener(this);
