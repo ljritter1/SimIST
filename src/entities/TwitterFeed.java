@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import twitter4j.Status;
 import javax.swing.*;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import sandbox.KeyReader;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -115,7 +116,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
         timelineScrollPane = new JScrollPane(timelineTweets);
             c.fill = GridBagConstraints.HORIZONTAL;
             c.weightx = 0;
-            c.ipady = 100;
+            c.ipady = 200;
             c.gridx = 0;
             c.gridy = 0;
             c.gridwidth = 3;
