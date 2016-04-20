@@ -5,10 +5,10 @@
  */
 package controllers;
 
+import entities.TwitterFeed;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -31,7 +31,7 @@ public class FrameTester {
     private JButton floor1;
     private JButton cybertorium;
     private JButton twitter;
-    private Icon twitterIcon;
+    private ImageIcon twitterIcon;
 
     private ClockPanel clock;
 
@@ -161,6 +161,12 @@ public class FrameTester {
                 }
             }
             
+            if(o == twitter){
+                try{
+                    TwitterFeed tweet = new TwitterFeed();
+                }catch(Exception ex){
+                }
+            }
         }
     }
 }
