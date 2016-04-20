@@ -18,6 +18,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.util.CharacterUtil;
 /**
  *
  * @author jakedotts
@@ -28,23 +29,30 @@ public class TwitterFeed extends JFrame implements ActionListener{
     JButton getTimeline, sendTweet, timelineBack, tweetBack, tweetPost;
     JTextArea timelineTweets, typeTweet;
     JScrollPane timelineScrollPane, tweetScrollPane;
+    JLabel logoLabel;
+    JPanel twitterPanel;
+    ImageIcon twitterLogo;
     
     public TwitterFeed(){
         
         twitterFrame = new JFrame("@SIM_IST");
         
-        twitterFrame.setLayout(new GridLayout(1,2));
+        twitterPanel = new JPanel();
+        twitterPanel.setLayout(new GridLayout(1,3));
+        
+        logoLabel = new JLabel(new ImageIcon("twitter.png"));
         
         getTimeline = new JButton("Get Timeline");
         getTimeline.addActionListener(this);
         
         sendTweet = new JButton("Post Tweet");
-        sendTweet.addActionListener(this);
+        sendTweet.addActionListener(this); 
         
-        twitterFrame.add(getTimeline);
-        twitterFrame.add(sendTweet);
+        twitterPanel.add(getTimeline);
+        twitterPanel.add(logoLabel);
+        twitterPanel.add(sendTweet); 
         
-        
+        twitterFrame.add(twitterPanel);
         
         twitterFrame.pack();
         twitterFrame.setSize(600, 300);
@@ -75,6 +83,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
         }
         
         else if(click.equals(tweetPost)){
+            
                 tweetFrame.dispose();
                 postTweet();
                 twitterFrame.setVisible(true);
@@ -106,7 +115,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
         timelineScrollPane = new JScrollPane(timelineTweets);
             c.fill = GridBagConstraints.HORIZONTAL;
             c.weightx = 0;
-            c.ipady = 200;
+            c.ipady = 100;
             c.gridx = 0;
             c.gridy = 0;
             c.gridwidth = 3;
@@ -153,7 +162,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
         
         tweetFrame.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        
+             
         tweetPost = new JButton("Post");
         tweetPost.addActionListener(this);
             c.fill = GridBagConstraints.HORIZONTAL;
@@ -161,7 +170,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
             c.gridx = 0;
             c.gridy = 1;
             tweetFrame.add(tweetPost, c);
-        
+            
         tweetBack = new JButton("Back");
         tweetBack.addActionListener(this);
             c.fill = GridBagConstraints.HORIZONTAL;
