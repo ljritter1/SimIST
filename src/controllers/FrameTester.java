@@ -60,7 +60,7 @@ public class FrameTester {
         menuPanel = new JButton("MenuPanel");
         floor1 = new JButton("Floor 1");
         cybertorium = new JButton("Cybertorium");
-        twitterIcon = new ImageIcon("TwitterLogo.png");
+        twitterIcon = new ImageIcon("src/entities/TwitterFeed TwitterLogo.png");
         twitter = new JButton(twitterIcon);
 
         frame.add(auBon);

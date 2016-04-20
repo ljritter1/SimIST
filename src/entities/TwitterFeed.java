@@ -5,6 +5,10 @@
  */
 package entities;
 
+import java.awt.Color;
+import static java.awt.Color.blue;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -28,31 +32,11 @@ public class TwitterFeed extends JFrame implements ActionListener{
     JButton getTimeline, sendTweet, timelineBack, tweetBack, tweetPost;
     JTextArea timelineTweets, typeTweet;
     JScrollPane timelineScrollPane, tweetScrollPane;
+    Font font;
+    JPanel panel;
     
     public TwitterFeed(){
-        
-        twitterFrame = new JFrame("@SIM_IST");
-        
-        twitterFrame.setLayout(new GridLayout(1,2));
-        
-        getTimeline = new JButton("Get Timeline");
-        getTimeline.addActionListener(this);
-        
-        sendTweet = new JButton("Post Tweet");
-        sendTweet.addActionListener(this);
-        
-        twitterFrame.add(getTimeline);
-        twitterFrame.add(sendTweet);
-        
-        
-        
-        twitterFrame.pack();
-        twitterFrame.setSize(600, 300);
-        twitterFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        twitterFrame.setLocationRelativeTo(null);
-        twitterFrame.setVisible(true);
-        
-        
+        initCustomComponents();
     }
     
     public void actionPerformed(ActionEvent e){
@@ -61,7 +45,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
         
         if(click.equals(getTimeline)){
             initTimeline();
-            twitterFrame.setVisible(false);                    
+            twitterFrame.setVisible(false);
         }
         
         else if(click.equals(timelineBack)){
@@ -206,5 +190,36 @@ public class TwitterFeed extends JFrame implements ActionListener{
             System.out.println("tweet post failed");
             te.printStackTrace();
         }
+    }
+    
+    public void initCustomComponents(){
+        twitterFrame = new JFrame("@SIM_IST");
+        panel = new JPanel();
+        
+        twitterFrame.setLayout(new GridLayout(1,2));
+        
+        getTimeline = new JButton("Get Timeline");
+        getTimeline.addActionListener(this);
+        
+        sendTweet = new JButton("Post Tweet");
+        sendTweet.addActionListener(this);
+        
+        panel.add(getTimeline);
+        panel.add(sendTweet);
+        twitterFrame.add(panel);
+        
+        getTimeline.setBackground(Color.blue);
+        
+        twitterFrame.pack();
+        twitterFrame.setSize(600, 300);
+        twitterFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        twitterFrame.setLocationRelativeTo(null);
+        twitterFrame.setVisible(true);
+    }
+    
+    public void design(Graphics g){
+        panel.setBackground(Color.blue);
+        
+        font = new Font("Lucinda", font.PLAIN, 36);
     }
 }
