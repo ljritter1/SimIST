@@ -8,6 +8,8 @@ package controllers;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import views.*;
@@ -28,6 +30,8 @@ public class FrameTester {
     private JButton menuPanel;
     private JButton floor1;
     private JButton cybertorium;
+    private JButton twitter;
+    private Icon twitterIcon;
 
     private ClockPanel clock;
 
@@ -56,6 +60,8 @@ public class FrameTester {
         menuPanel = new JButton("MenuPanel");
         floor1 = new JButton("Floor 1");
         cybertorium = new JButton("Cybertorium");
+        twitterIcon = new ImageIcon("OfficialTwitterLogo");
+        twitter = new JButton(twitterIcon);
 
         frame.add(auBon);
 //        frame.add(floor);
@@ -65,6 +71,7 @@ public class FrameTester {
 //        frame.add(menuPanel);
         frame.add(floor1);
         frame.add(cybertorium);
+        frame.add(twitter);
 
         auBon.addActionListener(new PanelSwitcher());
         floor.addActionListener(new PanelSwitcher());
@@ -74,6 +81,7 @@ public class FrameTester {
         menuPanel.addActionListener(new PanelSwitcher());
         floor1.addActionListener(new PanelSwitcher());
         cybertorium.addActionListener(new PanelSwitcher());
+        twitter.addActionListener(new PanelSwitcher());
     }
 
     private void refreshPane() {
