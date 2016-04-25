@@ -5,6 +5,7 @@
  */
 package entities;
 
+import static java.awt.Color.blue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -20,6 +21,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import twitter4j.util.CharacterUtil;
+import java.awt.Color;
 /**
  *
  * @author jakedotts
@@ -31,37 +33,14 @@ public class TwitterFeed extends JFrame implements ActionListener{
     JTextArea timelineTweets, typeTweet;
     JScrollPane timelineScrollPane, tweetScrollPane;
     JLabel logoLabel;
-    JPanel twitterPanel;
+    JPanel twitterPanel, postPanel, timelinePanel;
     ImageIcon twitterLogo;
+    Color panelB = new Color(102, 117, 127);
+    Color text = new Color(255, 255, 255);
+    Color btnColor = new Color(85, 172, 238);
     
     public TwitterFeed(){
-        
-        twitterFrame = new JFrame("@SIM_IST");
-        
-        twitterPanel = new JPanel();
-        twitterPanel.setLayout(new GridLayout(1,3));
-        
-        logoLabel = new JLabel(new ImageIcon("twitter.png"));
-        
-        getTimeline = new JButton("Get Timeline");
-        getTimeline.addActionListener(this);
-        
-        sendTweet = new JButton("Post Tweet");
-        sendTweet.addActionListener(this); 
-        
-        twitterPanel.add(getTimeline);
-        twitterPanel.add(logoLabel);
-        twitterPanel.add(sendTweet); 
-        
-        twitterFrame.add(twitterPanel);
-        
-        twitterFrame.pack();
-        twitterFrame.setSize(600, 300);
-        twitterFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        twitterFrame.setLocationRelativeTo(null);
-        twitterFrame.setVisible(true);
-        
-        
+        initCustomComponents();
     }
     
     public void actionPerformed(ActionEvent e){
@@ -98,8 +77,9 @@ public class TwitterFeed extends JFrame implements ActionListener{
     
     public void initTimeline(){
         timelineFrame = new JFrame("@SIM_IST Timeline");
+        timelinePanel = new JPanel();
         
-        timelineFrame.setLayout(new GridBagLayout());
+        timelinePanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
         timelineBack = new JButton("Back");
@@ -109,7 +89,8 @@ public class TwitterFeed extends JFrame implements ActionListener{
             c.gridx = 1;
             c.gridy = 1;
             c.gridwidth = 1;
-            timelineFrame.add(timelineBack, c);
+            timelinePanel.add(timelineBack, c);
+        timelineBack.setForeground(btnColor);
         
         timelineTweets = new JTextArea();
         timelineTweets.setEditable(false);
@@ -120,7 +101,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
             c.gridx = 0;
             c.gridy = 0;
             c.gridwidth = 3;
-            timelineFrame.add(timelineScrollPane, c);
+            timelinePanel.add(timelineScrollPane, c);
         
         KeyReader keys = new KeyReader();
         
@@ -151,6 +132,8 @@ public class TwitterFeed extends JFrame implements ActionListener{
             te.printStackTrace();
         }
         
+        timelinePanel.setBackground(panelB);
+        timelineFrame.add(timelinePanel);
         timelineFrame.pack();
         timelineFrame.setSize(600, 300);
         timelineFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -160,8 +143,9 @@ public class TwitterFeed extends JFrame implements ActionListener{
     
     public void initTweet(){
         tweetFrame = new JFrame("@SIM_IST Tweet");
+        postPanel = new JPanel();
         
-        tweetFrame.setLayout(new GridBagLayout());
+        postPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
              
         tweetPost = new JButton("Post");
@@ -170,7 +154,8 @@ public class TwitterFeed extends JFrame implements ActionListener{
             c.weightx = 0.5;
             c.gridx = 0;
             c.gridy = 1;
-            tweetFrame.add(tweetPost, c);
+            postPanel.add(tweetPost, c);
+        tweetPost.setForeground(btnColor);
             
         tweetBack = new JButton("Back");
         tweetBack.addActionListener(this);
@@ -178,7 +163,8 @@ public class TwitterFeed extends JFrame implements ActionListener{
             c.weightx = 0.5;
             c.gridx = 2;
             c.gridy = 1;
-            tweetFrame.add(tweetBack, c);
+            postPanel.add(tweetBack, c);
+        tweetBack.setForeground(btnColor);
         
         typeTweet = new JTextArea();
         tweetScrollPane = new JScrollPane(typeTweet);
@@ -188,8 +174,10 @@ public class TwitterFeed extends JFrame implements ActionListener{
             c.gridx = 0;
             c.gridy = 0;
             c.gridwidth = 3;
-            tweetFrame.add(tweetScrollPane, c);
+            postPanel.add(tweetScrollPane, c);
         
+        postPanel.setBackground(panelB);
+        tweetFrame.add(postPanel);
         tweetFrame.pack();
         tweetFrame.setSize(600, 300);
         tweetFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -216,5 +204,38 @@ public class TwitterFeed extends JFrame implements ActionListener{
             System.out.println("tweet post failed");
             te.printStackTrace();
         }
+    }
+
+    public void initCustomComponents(){
+        twitterFrame = new JFrame("@SIM_IST");
+        
+        twitterPanel = new JPanel();
+        twitterPanel.setLayout(new GridLayout(1,3));
+        
+        logoLabel = new JLabel(new ImageIcon("twitter.png"));
+        
+        getTimeline = new JButton("Get Timeline");
+        getTimeline.addActionListener(this);
+        getTimeline.setBackground(btnColor);
+        getTimeline.setForeground(btnColor);
+        
+        sendTweet = new JButton("Post Tweet");
+        sendTweet.addActionListener(this);
+        sendTweet.setBackground(btnColor);
+        sendTweet.setForeground(btnColor);
+        
+        twitterPanel.add(getTimeline);
+        twitterPanel.add(logoLabel);
+        twitterPanel.add(sendTweet);
+        twitterPanel.setBackground(panelB);
+        
+        
+        twitterFrame.add(twitterPanel);
+        
+        twitterFrame.pack();
+        twitterFrame.setSize(600, 300);
+        twitterFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        twitterFrame.setLocationRelativeTo(null);
+        twitterFrame.setVisible(true);
     }
 }
