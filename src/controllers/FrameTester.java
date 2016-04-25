@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import views.*;
 
@@ -31,7 +32,8 @@ public class FrameTester {
     private JButton floor1;
     private JButton cybertorium;
     private JButton twitter;
-    private ImageIcon twitterIcon;
+    //private ImageIcon twitterIcon;
+    private JButton twitterIcon;
 
     private ClockPanel clock;
 
@@ -60,8 +62,8 @@ public class FrameTester {
         menuPanel = new JButton("MenuPanel");
         floor1 = new JButton("Floor 1");
         cybertorium = new JButton("Cybertorium");
-        twitterIcon = new ImageIcon("src/entities/TwitterFeed TwitterLogo.png");
-        twitter = new JButton(twitterIcon);
+        twitterIcon = new JButton(new ImageIcon("twitter.png"));
+        //twitter = new JButton(twitterIcon);
 
         frame.add(auBon);
 //        frame.add(floor);
@@ -71,7 +73,7 @@ public class FrameTester {
 //        frame.add(menuPanel);
         frame.add(floor1);
         frame.add(cybertorium);
-        frame.add(twitter);
+        frame.add(twitterIcon);
 
         auBon.addActionListener(new PanelSwitcher());
         floor.addActionListener(new PanelSwitcher());
@@ -81,10 +83,11 @@ public class FrameTester {
         menuPanel.addActionListener(new PanelSwitcher());
         floor1.addActionListener(new PanelSwitcher());
         cybertorium.addActionListener(new PanelSwitcher());
-        twitter.addActionListener(new PanelSwitcher());
+        twitterIcon.addActionListener(new PanelSwitcher());
     }
 
     private void refreshPane() {
+        frame.pack();
         frame.revalidate();
         frame.repaint();
     }
@@ -161,7 +164,7 @@ public class FrameTester {
                 }
             }
             
-            if(o == twitter){
+            if(o == twitterIcon){
                 try{
                     TwitterFeed tweet = new TwitterFeed();
                 }catch(Exception ex){
