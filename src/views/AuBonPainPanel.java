@@ -42,6 +42,7 @@ public class AuBonPainPanel extends JPanel {
     private CharacterMovement characterMovement;
     private Customer student;
     private Rectangle bird;
+    private TwitterFeed theTwitterFeed;
 
     private JLabel temp = new JLabel();
 
@@ -96,7 +97,7 @@ public class AuBonPainPanel extends JPanel {
         double playerWidth = getParent().getWidth() * .06;
         g.drawImage(new ImageIcon("floor.png").getImage(), 0, 0, getParent().getWidth(), getParent().getHeight(), null);
         g.drawImage(new ImageIcon(characterMovement.getAnimation()).getImage(), student.x, student.y, (int) playerWidth, (int) playerHeight, null);
-
+        g.drawImage(new ImageIcon("twitter.png").getImage(), 100, 120, 50, 50, null);
         refreshStations();
         
         
@@ -124,5 +125,6 @@ public class AuBonPainPanel extends JPanel {
         soup.setBounds(Math.round(getParent().getWidth() * .18f), 0, Math.round(getParent().getWidth() * .18f), Math.round(getParent().getHeight() * .067f));
         cooler.setBounds(Math.round(getParent().getWidth() * .4f), 0, Math.round(getParent().getWidth() * .4f), Math.round(getParent().getHeight() * .08f));
         exitCompSci.setBounds(0, Math.round(getParent().getHeight() * .7f), 10, Math.round(getParent().getHeight() * .17f));
+        bird.setBounds(100, 120, 100, 120);
     }
 }

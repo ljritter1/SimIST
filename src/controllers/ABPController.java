@@ -288,7 +288,7 @@ public class ABPController {
                     charMovement.setFacing(charMovement.getAnimation());
                     charMovement.setStationNumber(abp.getStations().indexOf(station));
 
-                }else if(student.intersects((Rectangle) abp.getStations().listIterator(9))){
+                }else if(student.intersects(abp.getStations().get(9))){
                     twitter = new TwitterFeed();
                         testFrame.add(twitter);
                 }

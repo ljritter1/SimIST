@@ -38,6 +38,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
     Color panelB = new Color(102, 117, 127);
     Color text = new Color(255, 255, 255);
     Color btnColor = new Color(85, 172, 238);
+    String bird = "twitter.png";
     
     public TwitterFeed(){
         initCustomComponents();
@@ -204,6 +205,14 @@ public class TwitterFeed extends JFrame implements ActionListener{
             System.out.println("tweet post failed");
             te.printStackTrace();
         }
+    }
+    
+    public void setBird(String tweetBird){
+        bird = tweetBird;
+    }
+    
+    public String getBird(){
+        return bird;
     }
 
     public void initCustomComponents(){
