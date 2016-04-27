@@ -1,6 +1,7 @@
 package views;
 
 import controllers.ABPController;
+import entities.TwitterFeed;
 import models.*;
 import javax.swing.*;
 import java.awt.*;
@@ -40,6 +41,7 @@ public class AuBonPainPanel extends JPanel {
     private Rectangle exitCompSci;
     private CharacterMovement characterMovement;
     private Customer student;
+    private Rectangle bird;
 
     private JLabel temp = new JLabel();
 
@@ -75,17 +77,17 @@ public class AuBonPainPanel extends JPanel {
         soup = new Rectangle();
         cooler = new Rectangle();
         exitCompSci = new Rectangle();
-
+        bird = new Rectangle();
     }
 
     public ArrayList<Rectangle> getStations() {
-        return new ArrayList<>(Arrays.asList(counter, coffee, sign, trash, bakery, fruit, soup, cooler, exitCompSci));
+        return new ArrayList<>(Arrays.asList(counter, coffee, sign, trash, bakery, fruit, soup, cooler, exitCompSci, bird));
     }
 
     public void setKeyListener(KeyListener kl) {
         addKeyListener(kl);
     }
-
+    
     @Override
     protected void paintComponent(Graphics g) {
         setPreferredSize(getParent().getSize());
@@ -123,5 +125,4 @@ public class AuBonPainPanel extends JPanel {
         cooler.setBounds(Math.round(getParent().getWidth() * .4f), 0, Math.round(getParent().getWidth() * .4f), Math.round(getParent().getHeight() * .08f));
         exitCompSci.setBounds(0, Math.round(getParent().getHeight() * .7f), 10, Math.round(getParent().getHeight() * .17f));
     }
-
 }

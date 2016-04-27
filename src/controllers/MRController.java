@@ -6,7 +6,9 @@
 
 package controllers;
 
+import entities.TwitterFeed;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedInputStream;
@@ -28,6 +30,9 @@ import views.TestFrame;
 public class MRController {
     private MeetingRoomPanel mrp;
     private Timer gameTimer;
+    private Customer student;
+    private TwitterFeed twitter;
+    
     public MRController() throws Exception
     {
         

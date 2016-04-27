@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.TwitterFeed;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,7 @@ public class ABPController {
     private Inventory inventory;
     private CharacterInventory charInventory;
     private TestFrame testFrame;
+    private TwitterFeed twitter;
 
     public ABPController() throws Exception {
         testFrame = new TestFrame();
@@ -286,6 +288,9 @@ public class ABPController {
                     charMovement.setFacing(charMovement.getAnimation());
                     charMovement.setStationNumber(abp.getStations().indexOf(station));
 
+                }else if(student.intersects((Rectangle) abp.getStations().listIterator(9))){
+                    twitter = new TwitterFeed();
+                        testFrame.add(twitter);
                 }
 
             }
