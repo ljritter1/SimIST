@@ -22,6 +22,8 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import twitter4j.util.CharacterUtil;
 import java.awt.Color;
+import java.awt.Container;
+import views.TestFrame;
 /**
  *
  * @author jakedotts
@@ -39,6 +41,8 @@ public class TwitterFeed extends JFrame implements ActionListener{
     Color text = new Color(255, 255, 255);
     Color btnColor = new Color(85, 172, 238);
     String bird = "twitter.png";
+    Container container;
+//    TestFrame theTestFame;
     
     public TwitterFeed(){
         initCustomComponents();
@@ -217,6 +221,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
 
     public void initCustomComponents(){
         twitterFrame = new JFrame("@SIM_IST");
+        container = new Container();
         
         twitterPanel = new JPanel();
         twitterPanel.setLayout(new GridLayout(1,3));
@@ -243,8 +248,9 @@ public class TwitterFeed extends JFrame implements ActionListener{
         
         twitterFrame.pack();
         twitterFrame.setSize(600, 300);
-        twitterFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //twitterFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         twitterFrame.setLocationRelativeTo(null);
         twitterFrame.setVisible(true);
+        container.add(twitterFrame);
     }
 }
