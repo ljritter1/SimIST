@@ -81,7 +81,7 @@ public class TwitterFeed extends JFrame implements ActionListener{
     }
     
     public void initTimeline(){
-        timelineFrame = new JFrame("@SIM_IST Timeline");
+        timelineFrame = new JFrame("~ @SIM_IST Timeline ~");
         timelinePanel = new JPanel();
         
         timelinePanel.setLayout(new GridBagLayout());
